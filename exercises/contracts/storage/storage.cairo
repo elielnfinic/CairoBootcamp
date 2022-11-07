@@ -16,6 +16,9 @@ func get_balance{
     pedersen_ptr: HashBuiltin*,
     range_check_ptr,
 }() -> (res: felt) {
+    let (bal) = balance.read();
+    return (res = bal);
+
 }
 
 // Sets the balance to amount
@@ -25,4 +28,6 @@ func set_balance{
     pedersen_ptr: HashBuiltin*,
     range_check_ptr,
 }(amount: felt) {
+    balance.write(amount);
+    return ();
 }
